@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Texture PBR Generator™ - Pricing</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 50%, #0d1117 100%);
+            min-height: 100vh;
+            color: #fff;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .logo {
+            font-size: 36px;
+            font-weight: bold;
+            color: #00d4ff;
+            margin-bottom: 10px;
+        }
+        
+        .logo span {
+            color: #fff;
+        }
+        
+        .tagline {
+            color: #888;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #00ff88 0%, #00cc6a 100%);
+            color: #000;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        
+        /* Pricing Cards */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .pricing-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 40px 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .pricing-card.featured {
+            border: 2px solid #00d4ff;
+            background: rgba(0, 212, 255, 0.05);
+        }
+        
+        .pricing-card.featured::before {
+            content: 'BEST VALUE';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+            color: #fff;
+            padding: 8px 25px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        
+        .pricing-card.bundle {
+            border: 2px solid #00ff88;
+            background: rgba(0, 255, 136, 0.05);
+        }
+        
+        .pricing-card.bundle::before {
+            content: 'MEGA SAVE';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #00ff88 0%, #00cc6a 100%);
+            color: #000;
+            padding: 8px 25px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        
+        .card-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .card-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .card-subtitle {
+            color: #888;
+            font-size: 14px;
+        }
+        
+        .price {
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .price .amount {
+            font-size: 48px;
+            font-weight: bold;
+            color: #00d4ff;
+        }
+        
+        .price .currency {
+            font-size: 24px;
+            color: #888;
+        }
+        
+        .price .period {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .price .original {
+            text-decoration: line-through;
+            color: #666;
+            font-size: 20px;
+            margin-right: 10px;
+        }
+        
+        .price .discount {
+            background: #ff4757;
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        .features {
+            list-style: none;
+            margin: 30px 0;
+        }
+        
+        .features li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .features li::before {
+            content: '✓';
+            color: #00ff88;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .features li.disabled {
+            color: #555;
+        }
+        
+        .features li.disabled::before {
+            content: '✗';
+            color: #555;
+        }
+        
+        .features li.highlight {
+            color: #00d4ff;
+            font-weight: 500;
+        }
+        
+        .cta-button {
+            width: 100%;
+            padding: 16px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+        
+        .cta-primary {
+            background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+            color: #fff;
+        }
+        
+        .cta-primary:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4);
+        }
+        
+        .cta-success {
+            background: linear-gradient(135deg, #00ff88 0%, #00cc6a 100%);
+            color: #000;
+        }
+        
+        .cta-success:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.4);
+        }
+        
+        .cta-outline {
+            background: transparent;
+            border: 2px solid #00d4ff;
+            color: #00d4ff;
+        }
+        
+        .cta-outline:hover {
+            background: rgba(0, 212, 255, 0.1);
+        }
+        
+        /* Upgrade Section */
+        .upgrade-section {
+            background: rgba(0, 212, 255, 0.05);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 60px;
+            text-align: center;
+        }
+        
+        .upgrade-title {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+        
+        .upgrade-subtitle {
+            color: #888;
+            margin-bottom: 30px;
+        }
+        
+        .upgrade-price {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .upgrade-amount {
+            font-size: 36px;
+            font-weight: bold;
+            color: #00ff88;
+        }
+        
+        /* Comparison Table */
+        .comparison-section {
+            margin-bottom: 60px;
+        }
+        
+        .comparison-title {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 40px;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        
+        .comparison-table th,
+        .comparison-table td {
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .comparison-table th {
+            background: rgba(0, 212, 255, 0.1);
+            font-weight: bold;
+        }
+        
+        .comparison-table th:first-child,
+        .comparison-table td:first-child {
+            text-align: left;
+        }
+        
+        .comparison-table tr:hover {
+            background: rgba(255, 255, 255, 0.02);
+        }
+        
+        .check {
+            color: #00ff88;
+            font-size: 20px;
+        }
+        
+        .cross {
+            color: #555;
+            font-size: 20px;
+        }
+        
+        .pro-badge {
+            background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-left: 8px;
+        }
+        
+        /* FAQ */
+        .faq-section {
+            margin-bottom: 60px;
+        }
+        
+        .faq-title {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 40px;
+        }
+        
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .faq-item {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .faq-question {
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #00d4ff;
+        }
+        
+        .faq-answer {
+            color: #888;
+            line-height: 1.6;
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-text {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .footer-links {
+            margin-top: 20px;
+        }
+        
+        .footer-links a {
+            color: #00d4ff;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Trust Badges */
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+        
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #888;
+        }
+        
+        .trust-badge i {
+            color: #00ff88;
+            font-size: 20px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .comparison-table {
+                font-size: 14px;
+            }
+            
+            .comparison-table th,
+            .comparison-table td {
+                padding: 12px 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">Texture PBR Generator<span>™</span></div>
+            <p class="tagline">Professional PBR Texture Generation for Unity</p>
+            <div class="badge">✨ NOW AVAILABLE ON UNITY ASSET STORE</div>
+        </div>
+        
+        <!-- Trust Badges -->
+        <div class="trust-badges">
+            <div class="trust-badge">
+                <span>✓</span> Unity 2020.3+
+            </div>
+            <div class="trust-badge">
+                <span>✓</span> URP & HDRP Compatible
+            </div>
+            <div class="trust-badge">
+                <span>✓</span> 30-Day Money Back
+            </div>
+            <div class="trust-badge">
+                <span>✓</span> Free Updates
+            </div>
+        </div>
+        
+        <!-- Pricing Cards -->
+        <div class="pricing-grid">
+            <!-- Standard -->
+            <div class="pricing-card">
+                <div class="card-header">
+                    <div class="card-title">Standard</div>
+                    <div class="card-subtitle">Perfect for beginners</div>
+                </div>
+                <div class="price">
+                    <span class="amount">$9</span><span class="currency">.99</span>
+                    <div class="period">One-time purchase</div>
+                </div>
+                <ul class="features">
+                    <li>7 PBR Map Types</li>
+                    <li>Normal Map Generation</li>
+                    <li>Ambient Occlusion</li>
+                    <li>Smoothness Map</li>
+                    <li>Metallic Map</li>
+                    <li>Height Map</li>
+                    <li>Detail Map</li>
+                    <li>Edge/Cavity Map</li>
+                    <li>Batch Export</li>
+                    <li>Preset System</li>
+                    <li>Material Assign</li>
+                    <li>Comparison View</li>
+                    <li>Progress Bar</li>
+                    <li>Undo Support</li>
+                    <li class="disabled">Specular Map</li>
+                    <li class="disabled">Emission Map</li>
+                    <li class="disabled">Opacity Map</li>
+                    <li class="disabled">Channel Packing</li>
+                    <li class="disabled">Batch Processing</li>
+                </ul>
+                <a href="https://assetstore.unity.com/packages/slug/XXXXX" class="cta-button cta-outline">
+                    Get Standard
+                </a>
+            </div>
+            
+            <!-- Professional -->
+            <div class="pricing-card featured">
+                <div class="card-header">
+                    <div class="card-title">Professional</div>
+                    <div class="card-subtitle">For serious developers</div>
+                </div>
+                <div class="price">
+                    <span class="amount">$19</span><span class="currency">.99</span>
+                    <div class="period">One-time purchase</div>
+                </div>
+                <ul class="features">
+                    <li class="highlight">12 PBR Map Types</li>
+                    <li>Normal Map Generation</li>
+                    <li>Ambient Occlusion</li>
+                    <li>Smoothness Map</li>
+                    <li>Metallic Map</li>
+                    <li>Height Map</li>
+                    <li>Detail Map</li>
+                    <li>Edge/Cavity Map</li>
+                    <li class="highlight">Specular Map ✨</li>
+                    <li class="highlight">Emission Map ✨</li>
+                    <li class="highlight">Opacity Map ✨</li>
+                    <li class="highlight">Displacement Map ✨</li>
+                    <li class="highlight">SSS (Subsurface) ✨</li>
+                    <li class="highlight">Channel Packing ✨</li>
+                    <li class="highlight">Batch Processing ✨</li>
+                    <li class="highlight">Material Templates ✨</li>
+                    <li class="highlight">Advanced Settings ✨</li>
+                    <li class="highlight">Multiple Export Formats ✨</li>
+                </ul>
+                <a href="https://assetstore.unity.com/packages/slug/XXXXX" class="cta-button cta-primary">
+                    Get Professional
+                </a>
+            </div>
+            
+            <!-- Bundle -->
+            <div class="pricing-card bundle">
+                <div class="card-header">
+                    <div class="card-title">Bundle Deal</div>
+                    <div class="card-subtitle">Standard + Professional</div>
+                </div>
+                <div class="price">
+                    <span class="original">$29.98</span>
+                    <span class="amount">$24</span><span class="currency">.99</span>
+                    <div class="discount">SAVE $4.99 (17%)</div>
+                    <div class="period">One-time purchase</div>
+                </div>
+                <ul class="features">
+                    <li class="highlight">Everything in Standard</li>
+                    <li class="highlight">Everything in Professional</li>
+                    <li class="highlight">Best Value Package</li>
+                    <li>12 PBR Map Types</li>
+                    <li>Channel Packing</li>
+                    <li>Batch Processing</li>
+                    <li>Material Templates</li>
+                    <li>Advanced Settings</li>
+                    <li>Multiple Export Formats</li>
+                    <li>Free Updates</li>
+                    <li>Priority Support</li>
+                    <li>Lifetime License</li>
+                </ul>
+                <a href="https://assetstore.unity.com/packages/slug/XXXXX" class="cta-button cta-success">
+                    Get Bundle
+                </a>
+            </div>
+        </div>
+        
+        <!-- Upgrade Section -->
+        <div class="upgrade-section">
+            <h2 class="upgrade-title">Already own Standard?</h2>
+            <p class="upgrade-subtitle">Upgrade to Professional and unlock all features!</p>
+            <div class="upgrade-price">
+                <span class="original" style="font-size: 24px;">$19.99</span>
+                <span class="upgrade-amount">$12.99</span>
+                <span class="discount">SAVE $7.00 (35% OFF)</span>
+            </div>
+            <p style="color: #888; margin-bottom: 20px;">Limited time offer for Standard users</p>
+            <a href="https://assetstore.unity.com/packages/slug/XXXXX" class="cta-button cta-primary" style="max-width: 300px;">
+                Upgrade Now
+            </a>
+        </div>
+        
+        <!-- Comparison Table -->
+        <div class="comparison-section">
+            <h2 class="comparison-title">Feature Comparison</h2>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Standard ($9.99)</th>
+                        <th>Professional ($19.99)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>PBR Map Types</td>
+                        <td>7 maps</td>
+                        <td><strong>12 maps</strong> <span class="pro-badge">PRO</span></td>
+                    </tr>
+                    <tr>
+                        <td>Normal Map</td>
+                        <td><span class="check">✓</span></td>
+                        <td><span class="check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>Ambient Occlusion</td>
+                        <td><span class="check">✓</span></td>
+                        <td><span class="check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>Smoothness</td>
+                        <td><span class="check">✓</span></td>
+                        <td><span class="check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>Metallic</td>
+                        <td><span class="check">✓</span></td>
+                        <td><span class="check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>Height Map</td>
+                        <td><span class="check">✓</span></td>
+                        <td><span class="check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>Detail Map</td>
+                        <td><span class="check">✓</span></td>
+                        <td><span class="check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>Edge/Cavity</td>
+                        <td><span class="check">✓</span></td>
+                        <td><span class="check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>Specular Map</td>
+                        <td><span class="cross">✗</span></td>
+                        <td><span class="check">✓</span> <span class="pro-badge">PRO</span></td>
+                    </tr>
+                    <tr>
+                        <td>Emission Map</td>
+                        <td><span class="cross">✗</span></td>
+                        <td><span class="check">✓</span> <span class="pro-badge">PRO</span></td>
+                    </tr>
+                    <tr>
+                        <td>Opacity Map</td>
+                        <td><span class="cross">✗</span></td>
+                        <td><span class="check">✓</span> <span class="pro-badge">PRO</span></td>
+                    </tr>
+                    <tr>
+                        <td>Displacement Map</td>
+                        <td><span class="cross">✗</span></td>
+                        <td><span class="check">✓</span> <span class="pro-badge">PRO</span></td>
+                    </tr>
+                    <tr>
+                        <td>SSS (Subsurface)</td>
+                        <td><span class="cross">✗</span></td>
+                        <td><span class="check">✓</span> <span class="pro-badge">PRO</span></td>
+                    </tr>
+                    <tr>
+                        <td>Channel Packing</td>
+                        <td><span class="cross">✗</span></td>
+                        <td><span class="check">✓</span> <span class="pro-badge">PRO</span></td>
+                    </tr>
+                    <tr>
+                        <td>Batch Processing</td>
+                        <td><span class="cross">✗</span></td>
+                        <td><span class="check">✓</span> <span class="pro-badge">PRO</span></td>
+                    </tr>
+                    <tr>
+                        <td>Material Templates</td>
+                        <td><span class="cross">✗</span></td>
+                        <td><span class="check">✓</span> <span class="pro-badge">PRO</span></td>
+                    </tr>
+                    <tr>
+                        <td>Advanced Settings</td>
+                        <td><span class="cross">✗</span></td>
+                        <td><span class="check">✓</span> <span class="pro-badge">PRO</span></td>
+                    </tr>
+                    <tr>
+                        <td>Export Formats</td>
+                        <td>PNG only</td>
+                        <td><strong>PNG, TGA, EXR, JPG</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- FAQ -->
+        <div class="faq-section">
+            <h2 class="faq-title">Frequently Asked Questions</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">What's the difference between Standard and Professional?</div>
+                    <div class="faq-answer">Professional includes 5 additional PBR maps (Specular, Emission, Opacity, Displacement, SSS), Channel Packing, Batch Processing, Material Templates, and Advanced Settings.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Can I upgrade from Standard to Professional?</div>
+                    <div class="faq-answer">Yes! Standard users can upgrade to Professional for only $12.99 (35% discount).</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Is it compatible with Unity URP/HDRP?</div>
+                    <div class="faq-answer">Yes! Both versions work with Unity Standard, URP, and HDRP render pipelines.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Do I get free updates?</div>
+                    <div class="faq-answer">Yes! All future updates are included with your purchase.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What Unity versions are supported?</div>
+                    <div class="faq-answer">Unity 2020.3 and newer. Tested on Unity 2022.3 LTS.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Can I use this in commercial projects?</div>
+                    <div class="faq-answer">Yes! You can use generated textures in any commercial project.</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <p class="footer-text">© 2026 Bizzle Studios. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="https://bizzlestudios.github.io">Website</a>
+                <a href="https://discord.gg/bMS3yczPgk">Discord</a>
+                <a href="mailto:bizzlestudios123@gmail.com">Support</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

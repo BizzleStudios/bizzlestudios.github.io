@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MaterialFixer Kit™ - Pricing</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 50%, #0d1117 100%);
+            min-height: 100vh;
+            color: #fff;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .logo {
+            font-size: 36px;
+            font-weight: bold;
+            color: #ff6b6b;
+            margin-bottom: 10px;
+        }
+        
+        .logo span {
+            color: #fff;
+        }
+        
+        .tagline {
+            color: #888;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a5a 100%);
+            color: #fff;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        
+        .badge-beta {
+            background: linear-gradient(135deg, #ffd93d 0%, #f9c74f 100%);
+            color: #000;
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .pricing-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 40px 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .pricing-card.current {
+            border: 2px solid #ffd93d;
+            background: rgba(255, 217, 61, 0.05);
+        }
+        
+        .pricing-card.current::before {
+            content: 'CURRENT VERSION';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #ffd93d 0%, #f9c74f 100%);
+            color: #000;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        
+        .pricing-card.featured {
+            border: 2px solid #ff6b6b;
+            background: rgba(255, 107, 107, 0.05);
+        }
+        
+        .pricing-card.featured::before {
+            content: 'BEST VALUE';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a5a 100%);
+            color: #fff;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        
+        .pricing-card.pro {
+            border: 2px solid #a855f7;
+            background: rgba(168, 85, 247, 0.05);
+        }
+        
+        .pricing-card.pro::before {
+            content: 'COMING SOON';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #a855f7 0%, #9333ea 100%);
+            color: #fff;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        
+        .card-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .card-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .card-subtitle {
+            color: #888;
+            font-size: 14px;
+        }
+        
+        .price {
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .price .amount {
+            font-size: 48px;
+            font-weight: bold;
+            color: #ff6b6b;
+        }
+        
+        .price .currency {
+            font-size: 24px;
+            color: #888;
+        }
+        
+        .price .period {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .price .original {
+            text-decoration: line-through;
+            color: #666;
+            font-size: 20px;
+            margin-right: 10px;
+        }
+        
+        .price .discount {
+            background: #ff4757;
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        .price .free {
+            color: #00ff88;
+            font-size: 36px;
+        }
+        
+        .features {
+            list-style: none;
+            margin: 30px 0;
+        }
+        
+        .features li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .features li::before {
+            content: '✓';
+            color: #00ff88;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .features li.disabled {
+            color: #555;
+        }
+        
+        .features li.disabled::before {
+            content: '✗';
+            color: #555;
+        }
+        
+        .features li.highlight {
+            color: #ff6b6b;
+            font-weight: 500;
+        }
+        
+        .features li.coming {
+            color: #a855f7;
+        }
+        
+        .cta-button {
+            width: 100%;
+            padding: 16px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+        
+        .cta-primary {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a5a 100%);
+            color: #fff;
+        }
+        
+        .cta-primary:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
+        }
+        
+        .cta-success {
+            background: linear-gradient(135deg, #00ff88 0%, #00cc6a 100%);
+            color: #000;
+        }
+        
+        .cta-outline {
+            background: transparent;
+            border: 2px solid #ff6b6b;
+            color: #ff6b6b;
+        }
+        
+        .cta-outline:hover {
+            background: rgba(255, 107, 107, 0.1);
+        }
+        
+        .cta-disabled {
+            background: #333;
+            color: #666;
+            cursor: not-allowed;
+        }
+        
+        .upgrade-section {
+            background: rgba(255, 107, 107, 0.05);
+            border: 1px solid rgba(255, 107, 107, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 60px;
+            text-align: center;
+        }
+        
+        .upgrade-title {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+        
+        .upgrade-subtitle {
+            color: #888;
+            margin-bottom: 30px;
+        }
+        
+        .upgrade-pricing {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .upgrade-item {
+            text-align: center;
+        }
+        
+        .upgrade-item .version {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 5px;
+        }
+        
+        .upgrade-item .price {
+            margin: 0;
+        }
+        
+        .timeline-section {
+            margin-bottom: 60px;
+        }
+        
+        .timeline-title {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 40px;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #ffd93d 0%, #ff6b6b 50%, #a855f7 100%);
+            border-radius: 2px;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 60px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            flex-direction: row;
+        }
+        
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        
+        .timeline-content {
+            width: 45%;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-right: auto;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: auto;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #fff;
+            border: 4px solid #ff6b6b;
+            z-index: 1;
+        }
+        
+        .timeline-dot.active {
+            background: #ffd93d;
+            border-color: #ffd93d;
+        }
+        
+        .timeline-date {
+            font-size: 14px;
+            color: #ff6b6b;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .timeline-version {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .timeline-price {
+            color: #00ff88;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .timeline-features {
+            color: #888;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .comparison-section {
+            margin-bottom: 60px;
+        }
+        
+        .comparison-title {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 40px;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        
+        .comparison-table th,
+        .comparison-table td {
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .comparison-table th {
+            background: rgba(255, 107, 107, 0.1);
+            font-weight: bold;
+        }
+        
+        .comparison-table th:first-child,
+        .comparison-table td:first-child {
+            text-align: left;
+        }
+        
+        .check {
+            color: #00ff88;
+            font-size: 20px;
+        }
+        
+        .cross {
+            color: #555;
+            font-size: 20px;
+        }
+        
+        .coming-badge {
+            background: linear-gradient(135deg, #a855f7 0%, #9333ea 100%);
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .current-badge {
+            background: linear-gradient(135deg, #ffd93d 0%, #f9c74f 100%);
+            color: #000;
+            padding: 4px 12px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .faq-section {
+            margin-bottom: 60px;
+        }
+        
+        .faq-title {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 40px;
+        }
+        
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .faq-item {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .faq-question {
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #ff6b6b;
+        }
+        
+        .faq-answer {
+            color: #888;
+            line-height: 1.6;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-text {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .footer-links {
+            margin-top: 20px;
+        }
+        
+        .footer-links a {
+            color: #ff6b6b;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+        
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #888;
+        }
+        
+        .trust-badge span {
+            color: #00ff88;
+            font-size: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline::before {
+                left: 20px;
+            }
+            
+            .timeline-item {
+                flex-direction: column !important;
+                padding-left: 50px;
+            }
+            
+            .timeline-content {
+                width: 100%;
+                margin: 0 !important;
+            }
+            
+            .timeline-dot {
+                left: 20px;
+            }
+            
+            .comparison-table {
+                font-size: 14px;
+            }
+            
+            .comparison-table th,
+            .comparison-table td {
+                padding: 12px 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">MaterialFixer Kit<span>™</span></div>
+            <p class="tagline">Fix Your Materials in One Click</p>
+            <div class="badge badge-beta">beta NOW AVAILABLE ON UNITY ASSET STORE</div>
+        </div>
+        
+        <!-- Trust Badges -->
+        <div class="trust-badges">
+            <div class="trust-badge">
+                <span>✓</span> Unity 2020.3+
+            </div>
+            <div class="trust-badge">
+                <span>✓</span> URP Compatible
+            </div>
+            <div class="trust-badge">
+                <span>✓</span> 30-Day Money Back
+            </div>
+            <div class="trust-badge">
+                <span>✓</span> Free Updates
+            </div>
+        </div>
+        
+        <!-- Pricing Cards -->
+        <div class="pricing-grid">
+            <!-- Beta (Current) -->
+            <div class="pricing-card current">
+                <div class="card-header">
+                    <div class="card-title">Beta</div>
+                    <div class="card-subtitle">Early access - Limited features</div>
+                </div>
+                <div class="price">
+                    <span class="amount">$6</span><span class="currency">.99</span>
+                    <div class="period">One-time purchase</div>
+                </div>
+                <ul class="features">
+                    <li>10 Materials per fix</li>
+                    <li>Built-in → URP Conversion</li>
+                    <li>URP → Built-in Conversion</li>
+                    <li>Auto-fix Common Issues</li>
+                    <li>One-Click Fix</li>
+                    <li>Undo Support</li>
+                    <li class="disabled">Unlimited Materials</li>
+                    <li class="disabled">HDRP Support</li>
+                    <li class="disabled">Batch Processing</li>
+                    <li class="disabled">Custom Rules</li>
+                    <li class="disabled">Priority Support</li>
+                </ul>
+                <a href="https://assetstore.unity.com/packages/slug/396864" class="cta-button cta-outline">
+                    Get Beta
+                </a>
+            </div>
+            
+            <!-- Lite -->
+            <div class="pricing-card featured">
+                <div class="card-header">
+                    <div class="card-title">Lite</div>
+                    <div class="card-subtitle">For indie developers</div>
+                </div>
+                <div class="price">
+                    <span class="amount">$11</span><span class="currency">.99</span>
+                    <div class="period">One-time purchase</div>
+                </div>
+                <ul class="features">
+                    <li>Unlimited Materials</li>
+                    <li>Built-in → URP Conversion</li>
+                    <li>URP → Built-in Conversion</li>
+                    <li>Auto-fix Common Issues</li>
+                    <li>One-Click Fix</li>
+                    <li>Undo Support</li>
+                    <li class="highlight">Batch Processing ✨</li>
+                    <li class="highlight">Custom Rules ✨</li>
+                    <li class="disabled">HDRP Support</li>
+                    <li class="disabled">Priority Support</li>
+                </ul>
+                <a href="#" class="cta-button cta-primary">
+                    Coming Late Sept 2026
+                </a>
+            </div>
+            
+            <!-- Standard -->
+            <div class="pricing-card">
+                <div class="card-header">
+                    <div class="card-title">Standard</div>
+                    <div class="card-subtitle">For professional studios</div>
+                </div>
+                <div class="price">
+                    <span class="amount">$34</span><span class="currency">.99</span>
+                    <div class="period">One-time purchase</div>
+                </div>
+                <ul class="features">
+                    <li>Everything in Lite</li>
+                    <li class="highlight">HDRP Support ✨</li>
+                    <li class="highlight">Pipeline Auto-Detect ✨</li>
+                    <li class="highlight">Shader Graph Fix ✨</li>
+                    <li class="highlight">Material Templates ✨</li>
+                    <li class="highlight">Advanced Logging ✨</li>
+                    <li class="highlight">API Access ✨</li>
+                    <li class="disabled">Priority Support</li>
+                </ul>
+                <a href="#" class="cta-button cta-outline">
+                    Coming Dec 2026
+                </a>
+            </div>
+            
+            <!-- Professional -->
+            <div class="pricing-card pro">
+                <div class="card-header">
+                    <div class="card-title">Professional</div>
+                    <div class="card-subtitle">Coming Soon</div>
+                </div>
+                <div class="price">
+                    <span class="amount">$74</span><span class="currency">.99</span>
+                    <div class="period">Coming April 2027</div>
+                </div>
+                <ul class="features">
+                    <li>Everything in Standard</li>
+                    <li class="coming">Priority Support ✨</li>
+                    <li class="coming">Custom Development ✨</li>
+                    <li class="coming">Team License (5 seats) ✨</li>
+                    <li class="coming">Phone Support ✨</li>
+                    <li class="coming">SLA Guarantee ✨</li>
+                    <li style="color: #666; font-style: italic; text-align: center; padding: 15px 0;">
+                        More features revealed at launch
+                    </li>
+                </ul>
+                <button class="cta-button cta-disabled">
+                    Coming April 2027
+                </button>
+            </div>
+        </div>
+        
+        <!-- Upgrade Section for Beta Users -->
+        <div class="upgrade-section">
+            <h2 class="upgrade-title">Beta User Exclusive Upgrade</h2>
+            <p class="upgrade-subtitle">Thank you for being early adopters! Here's your special pricing:</p>
+            <div class="upgrade-pricing">
+                <div class="upgrade-item">
+                    <div class="version">Beta → Lite</div>
+                    <div class="price">
+                        <span class="original" style="font-size: 18px;">$11.99</span>
+                        <span style="font-size: 28px; color: #00ff88; font-weight: bold;">$4.99</span>
+                        <div class="discount">SAVE $7.00 (58% OFF)</div>
+                    </div>
+                </div>
+                <div class="upgrade-item">
+                    <div class="version">Beta → Standard</div>
+                    <div class="price">
+                        <span class="original" style="font-size: 18px;">$34.99</span>
+                        <span style="font-size: 28px; color: #00ff88; font-weight: bold;">$17.99</span>
+                        <div class="discount">SAVE $17.00 (49% OFF)</div>
+                    </div>
+                </div>
+                <div class="upgrade-item">
+                    <div class="version">Beta → Professional</div>
+                    <div class="price">
+                        <span class="original" style="font-size: 18px;">$74.99</span>
+                        <span style="font-size: 28px; color: #00ff88; font-weight: bold;">$34.99</span>
+                        <div class="discount">SAVE $40.00 (53% OFF)</div>
+                    </div>
+                </div>
+            </div>
+            <p style="color: #888; margin-top: 30px;">* First 100 Beta users only. Limited time offer.</p>
+        </div>
+        
+        <!-- Timeline -->
+        <div class="timeline-section">
+            <h2 class="timeline-title">Release Timeline</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">July 2026 ✅</div>
+                        <div class="timeline-version">Beta v1.0</div>
+                        <div class="timeline-price">$6.99</div>
+                        <div class="timeline-features">
+                            10 materials per fix<br>
+                            Built-in ↔ URP conversion<br>
+                            Basic auto-fix
+                        </div>
+                    </div>
+                    <div class="timeline-dot active"></div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Late Sept - Early Oct 2026</div>
+                        <div class="timeline-version">Lite v1.2</div>
+                        <div class="timeline-price">$11.99</div>
+                        <div class="timeline-features">
+                            Unlimited materials<br>
+                            Batch processing<br>
+                            Custom rules
+                        </div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">December 2026</div>
+                        <div class="timeline-version">Standard v1.5</div>
+                        <div class="timeline-price">$34.99</div>
+                        <div class="timeline-features">
+                            HDRP support<br>
+                            Shader Graph fix<br>
+                            Material templates
+                        </div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">April 2027</div>
+                        <div class="timeline-version">Professional v2.0</div>
+                        <div class="timeline-price">$74.99</div>
+                        <div class="timeline-features">
+                            Priority support<br>
+                            Custom development<br>
+                            Team license
+                        </div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Comparison Table -->
+        <div class="comparison-section">
+            <h2 class="comparison-title">Feature Comparison</h2>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Beta ($6.99)</th>
+                        <th>Lite ($11.99)</th>
+                        <th>Standard ($34.99)</th>
+                        <th>Professional ($74.99)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Materials per Fix</td>
+                        <td>10 <span class="current-badge">CURRENT</span></td>
+                        <td><strong>Unlimited</strong></td>
+                        <td><strong>Unlimited</strong></td>
+                        <td><strong>Unlimited</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Built-in ↔ URP</td>
+                        <td><span class="check">✓</span></td>
+                        <td><span class="check">✓</span></td>
+                        <td><span class="check">✓</span></td>
+                        <td><span class="check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>Auto-fix Common Issues</td>
+                        <td><span class="check">✓</span></td>
+                        <td><span class="check">✓</span></td>
+                        <td><span class="check">✓</span></td>
+                        <td><span class="check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>Undo Support</td>
+                        <td><span class="check">✓</span></td>
+                        <td><span class="check">✓</span></td>
+                        <td><span class="check">✓</span></td>
+                        <td><span class="check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>Batch Processing</td>
+                        <td><span class="cross">✗</span></td>
+                        <td><span class="check">✓</span> <span class="coming-badge">NEW</span></td>
+                        <td><span class="check">✓</span></td>
+                        <td><span class="check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>Custom Rules</td>
+                        <td><span class="cross">✗</span></td>
+                        <td><span class="check">✓</span> <span class="coming-badge">NEW</span></td>
+                        <td><span class="check">✓</span></td>
+                        <td><span class="check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>HDRP Support</td>
+                        <td><span class="cross">✗</span></td>
+                        <td><span class="cross">✗</span></td>
+                        <td><span class="check">✓</span> <span class="coming-badge">NEW</span></td>
+                        <td><span class="check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>Pipeline Auto-Detect</td>
+                        <td><span class="cross">✗</span></td>
+                        <td><span class="cross">✗</span></td>
+                        <td><span class="check">✓</span> <span class="coming-badge">NEW</span></td>
+                        <td><span class="check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>Shader Graph Fix</td>
+                        <td><span class="cross">✗</span></td>
+                        <td><span class="cross">✗</span></td>
+                        <td><span class="check">✓</span> <span class="coming-badge">NEW</span></td>
+                        <td><span class="check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>Material Templates</td>
+                        <td><span class="cross">✗</span></td>
+                        <td><span class="cross">✗</span></td>
+                        <td><span class="check">✓</span> <span class="coming-badge">NEW</span></td>
+                        <td><span class="check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>API Access</td>
+                        <td><span class="cross">✗</span></td>
+                        <td><span class="cross">✗</span></td>
+                        <td><span class="check">✓</span> <span class="coming-badge">NEW</span></td>
+                        <td><span class="check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>Source Code Access</td>
+                        <td><span class="cross">✗</span></td>
+                        <td><span class="cross">✗</span></td>
+                        <td><span class="cross">✗</span></td>
+                        <td><span class="cross">✗</span></td>
+                    </tr>
+                    <tr>
+                        <td>Priority Support</td>
+                        <td><span class="cross">✗</span></td>
+                        <td><span class="cross">✗</span></td>
+                        <td><span class="cross">✗</span></td>
+                        <td><span class="check">✓</span> <span class="coming-badge">PRO</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- FAQ -->
+        <div class="faq-section">
+            <h2 class="faq-title">Frequently Asked Questions</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">What's included in Beta?</div>
+                    <div class="faq-answer">Beta includes basic material fixing with 10 materials per fix, Built-in ↔ URP conversion, and one-click fix. It's a limited version to test the core features.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">When will Lite be released?</div>
+                    <div class="faq-answer">Lite is planned for Late September - Early October 2026 at $11.99. It will include unlimited materials, batch processing, and custom rules.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Can I upgrade from Beta to Lite?</div>
+                    <div class="faq-answer">Yes! Beta users get exclusive pricing: upgrade to Lite for only $4.99 (58% OFF). First 100 users only.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Will HDRP be supported?</div>
+                    <div class="faq-answer">HDRP support is coming in Standard v1.5 (December 2026). Beta and Lite versions focus on Built-in ↔ URP conversion.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Do I get free updates?</div>
+                    <div class="faq-answer">Yes! All version updates within your tier are included. Major version upgrades (e.g., Lite → Standard) require separate purchase.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What Unity versions are supported?</div>
+                    <div class="faq-answer">Unity 2020.3 and newer. Tested on Unity 2022.3 LTS. HDRP support requires Unity 2021.3+.</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <p class="footer-text">© 2026 Bizzle Studios. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="https://bizzlestudios.github.io">Website</a>
+                <a href="https://discord.gg/bMS3yczPgk">Discord</a>
+                <a href="mailto:bizzlestudios123@gmail.com">Support</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
