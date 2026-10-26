@@ -30,18 +30,11 @@ p{color:#94a3b8;margin-bottom:12px}
 .product h3{font-size:18px;font-weight:700;color:#e4e9f0}
 .product-tag{font-size:10px;font-weight:700;padding:4px 10px;border-radius:100px;text-transform:uppercase;letter-spacing:1px}
 .tag-live{background:rgba(52,211,153,0.1);color:#34d399;border:1px solid rgba(52,211,153,0.2)}
-.tag-soon{background:rgba(251,191,36,0.1);color:#fbbf24;border:1px solid rgba(251,191,36,0.2)}
-.tag-beta{background:rgba(56,189,248,0.1);color:#38bdf8;border:1px solid rgba(56,189,248,0.2)}
 .product p{font-size:14px;margin-bottom:8px}
 .product-price{font-size:28px;font-weight:900;color:#34d399;margin:10px 0}
 .product-features{font-size:13px;color:#64748b}
 .product-link{display:inline-block;margin-top:12px;font-size:13px;color:#38bdf8;text-decoration:none;font-weight:600}
 .product-link:hover{text-decoration:underline}
-.upcoming{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}
-.up-item{background:#141c2c;border:1px solid #1a2538;border-radius:10px;padding:16px;text-align:center}
-.up-date{font-family:monospace;font-size:11px;color:#38bdf8;font-weight:700;margin-bottom:6px}
-.up-name{font-size:14px;font-weight:700;color:#e4e9f0;margin-bottom:4px}
-.up-price{font-size:12px;color:#34d399}
 .links{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .link{display:flex;align-items:center;gap:15px;padding:16px 20px;background:#141c2c;border:1px solid #1a2538;border-radius:10px;text-decoration:none;transition:all 0.2s}
 .link:hover{border-color:#38bdf8;background:rgba(56,189,248,0.05)}
@@ -54,7 +47,7 @@ p{color:#94a3b8;margin-bottom:12px}
 .link-text p{font-size:12px;color:#64748b;margin:0}
 .footer{text-align:center;padding:30px;color:#475569;font-size:12px;border-top:1px solid #1a2538;margin-top:40px}
 .footer a{color:#38bdf8;text-decoration:none}
-@media(max-width:700px){.upcoming{grid-template-columns:1fr 1fr}.links{grid-template-columns:1fr}h1{font-size:36px}}
+@media(max-width:700px){.links{grid-template-columns:1fr}h1{font-size:36px}}
 </style>
 </head>
 <body>
@@ -63,7 +56,6 @@ p{color:#94a3b8;margin-bottom:12px}
 <div class="nb">BIZZLESTUDIOS™</div>
 <div class="nav-links">
 <a href="#products">Products</a>
-<a href="#upcoming">Upcoming</a>
 <a href="#contact">Contact</a>
 </div>
 </div>
@@ -71,50 +63,22 @@ p{color:#94a3b8;margin-bottom:12px}
 <div class="tag">Unity Developer Tools</div>
 <h1>BIZZLESTUDIOS™</h1>
 <p class="sub">Professional Unity Editor Tools & Plugins</p>
-<p class="tagline">Fix • Convert • Optimize</p>
+<p class="tagline">Audio • Scripting • Automation</p>
 </div>
 <div class="section" id="products">
 <div class="section-title">Released Products</div>
 <div class="products">
 <div class="product">
 <div class="product-header">
-<h3>🎮 MaterialFixer Kit™ (Beta)</h3>
+<h3>⚡ Audio To Code Generator™ (Indie Edition)</h3>
 <span class="product-tag tag-live">Available Now</span>
 </div>
-<p>Fix pink/missing materials caused by render pipeline mismatches. Convert Built-in materials to URP automatically.</p>
-<div class="product-price">$7.00</div>
-<p class="product-features">Fix 10 materials at a time • Built-in → URP conversion • Auto-detect pink materials • Undo support • Complete user manual (EN & ID) • License agreement included</p>
-<a href="https://assetstore.unity.com/packages/slug/396864" target="_blank" class="product-link">View on Asset Store →</a>
+<p>Convert audio files and rhythm data into clean, optimized Unity C# scripts and events automatically. Streamline audio-driven gameplay and event synchronization with ease.</p>
+<div class="product-price">$9.50</div>
+<p class="product-features">Fast audio analysis • Clean & optimized C# output • Event & beat trigger support • Full source included • Complete user manual (EN & ID) • Lifetime updates</p>
+<a href="https://assetstore.unity.com/packages/tools/audio/audio-to-code-generator-indie-edition-407658" target="_blank" class="product-link">View on Asset Store →</a>
 </div>
 </div>
-</div>
-<div class="section" id="upcoming">
-<div class="section-title">Upcoming Releases</div>
-<h2>Full Edition Lineup</h2>
-<p>Beta users get exclusive upgrade pricing when new editions are released!</p>
-<div class="upcoming">
-<div class="up-item">
-<div class="up-date">SEPT 2026</div>
-<div class="up-name">Lite Edition</div>
-<div class="up-price">$12.00</div>
-</div>
-<div class="up-item">
-<div class="up-date">NOV 2026</div>
-<div class="up-name">Standard Edition</div>
-<div class="up-price">$35.00</div>
-</div>
-<div class="up-item">
-<div class="up-date">MAR 2027</div>
-<div class="up-name">Professional Edition</div>
-<div class="up-price">$75.00</div>
-</div>
-<div class="up-item">
-<div class="up-date">TBA</div>
-<div class="up-name">More Plugins</div>
-<div class="up-price">Coming Soon</div>
-</div>
-</div>
-<p style="margin-top:16px;font-size:13px;color:#fbbf24">⚡ Beta users get special upgrade pricing: Beta → Lite $5 | Standard $20 | Professional $40 (first 100 buyers)</p>
 </div>
 <div class="section" id="contact">
 <div class="section-title">Contact & Support</div>
@@ -151,7 +115,7 @@ p{color:#94a3b8;margin-bottom:12px}
 </div>
 <div class="footer">
 <p>© 2026 <a href="https://www.youtube.com/@BizzleStudios">BizzleStudios™</a>. All Rights Reserved.</p>
-<p>MaterialFixer Kit™ is a trademark of BizzleStudios™.</p>
+<p>Audio To Code Generator™ is a trademark of BizzleStudios™.</p>
 </div>
 </div>
 </body>
