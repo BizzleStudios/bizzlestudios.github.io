@@ -26,12 +26,15 @@ p{color:#94a3b8;margin-bottom:12px}
 .products{display:grid;grid-template-columns:1fr;gap:16px}
 .product{background:linear-gradient(135deg,#0d1220,#14203a);border:1px solid #1a2538;border-radius:12px;padding:24px;transition:border-color 0.2s}
 .product:hover{border-color:#38bdf8}
-.product-header{display:flex;justify-content:space-between;align-items:start;margin-bottom:12px}
+.product-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:8px}
 .product h3{font-size:18px;font-weight:700;color:#e4e9f0}
 .product-tag{font-size:10px;font-weight:700;padding:4px 10px;border-radius:100px;text-transform:uppercase;letter-spacing:1px}
 .tag-live{background:rgba(52,211,153,0.1);color:#34d399;border:1px solid rgba(52,211,153,0.2)}
+.tag-sale{background:rgba(239,68,68,0.15);color:#f87171;border:1px solid rgba(239,68,68,0.3)}
 .product p{font-size:14px;margin-bottom:8px}
-.product-price{font-size:28px;font-weight:900;color:#34d399;margin:10px 0}
+.product-price{font-size:28px;font-weight:900;color:#34d399;margin:10px 0;display:flex;align-items:center;gap:10px}
+.price-original{text-decoration:line-through;color:#64748b;font-size:18px;font-weight:600}
+.discount-badge{font-size:11px;font-weight:700;color:#f87171;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.25);padding:3px 8px;border-radius:6px;text-transform:uppercase}
 .product-features{font-size:13px;color:#64748b}
 .product-link{display:inline-block;margin-top:12px;font-size:13px;color:#38bdf8;text-decoration:none;font-weight:600}
 .product-link:hover{text-decoration:underline}
@@ -71,11 +74,18 @@ p{color:#94a3b8;margin-bottom:12px}
 <div class="product">
 <div class="product-header">
 <h3>⚡ Audio To Code Generator™ (Indie Edition)</h3>
+<div style="display:flex;gap:6px">
 <span class="product-tag tag-live">Available Now</span>
+<span class="product-tag tag-sale">-50% OFF</span>
 </div>
-<p>Convert audio files and rhythm data into clean, optimized Unity C# scripts and events automatically. Streamline audio-driven gameplay and event synchronization with ease.</p>
-<div class="product-price">$9.50</div>
-<p class="product-features">Fast audio analysis • Clean & optimized C# output • Event & beat trigger support • Full source included • Complete user manual (EN & ID) • Lifetime updates</p>
+</div>
+<p>Procedural Audio & C# Engine for Unity. Convert sound data into code with zero external file dependencies.</p>
+<div class="product-price">
+<span>$9.50</span>
+<span class="price-original">$19.00</span>
+<span class="discount-badge">New Release Sale</span>
+</div>
+<p class="product-features">Zero-File Dependencies (No .wav / .mp3) • Real-Time DSP Audio Splicing & Tuning • 4 Export Formats (Gzip, PCM, Provider, Component) • Inspector Multi-Audio Controller Included</p>
 <a href="https://assetstore.unity.com/packages/tools/audio/audio-to-code-generator-indie-edition-407658" target="_blank" class="product-link">View on Asset Store →</a>
 </div>
 </div>
